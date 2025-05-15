@@ -366,11 +366,50 @@ public class CommentWidget extends TextWidget {
 
 ### 가짜 범위
 
-빈 while문이나 for문을 쓰지 않는 것 좋지만 만약 쓰게 된다면 세미콜론(;)을 새 행에 제대로 들여써서 넣어준다.
+- `if`, `while`, `for` 뒤에 오는 **아무 동작도 하지 않는 빈 문장(세미콜론 `;`)이 오는 경우**
+
+---
+
+👎👎👎
 
 ```java
-while(dis.read(buf, 0, readBufferSize)!=-1);
+// while은 세미콜론 하나가 루프 본문처럼 동작 
+//   → 루프는 실행되지만 아무 일도 안 함
+while (inputStream.read() != -1);
+    
+// for 뒤에 ;가 있어 루프 내부가 없음 
+//   → 실제 블록은 루프 외부이며 단 한 번만 실행
+for (int i = 0; i < 10; i++);
+{
+    System.out.println("This only runs once!");
+}
 ```
+
+- `;` 하나가 본문으로 처리됨 → 읽기 어렵고, 실수로 작성된 것처럼 보임
+
+
+### 👍👍👍
+
+```java
+while (inputStream.read() != -1)
+    ; // intentionally empty
+  
+    
+// 예: 딜레이 (busy wait) CPU를 소모하면서 일정 시간 대기
+for (long wait = 0; wait < 1_000_000L; wait++)
+    ; // intentional delay
+```
+
+- 주석으로 의도 명시
+- 들여쓰기로 가독성 개선
+
+---
+
+| ❌ **삭제해야 할 경우** | ✅ **유지할 수 있는 경우** |
+| --- | --- |
+| 실수로 세미콜론이 들어간 경우 | 스트림을 소비하거나 busy-wait처럼 명확한 목적이 있는 경우 |
+| 루프 내부에 실행 코드가 빠진 경우 | 동작이 없어야만 하는 루프일 때 (단, **주석 필수**) |
+
 
 ## 팀 규칙
 
