@@ -1,0 +1,438 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <link rel="stylesheet" href="/assets/css/just-the-docs-default.css"> <link rel="stylesheet" href="/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet"> <style id="jtd-nav-activation"> .site-nav > ul.nav-list:first-child > li:not(:nth-child(16)) > a, .site-nav > ul.nav-list:first-child > li > ul > li a { background-image: none; } .site-nav > ul.nav-list:not(:first-child) a, .site-nav li.external a { background-image: none; } .site-nav > ul.nav-list:first-child > li:nth-child(16) > a { font-weight: 600; text-decoration: none; }.site-nav > ul.nav-list:first-child > li:nth-child(16) > button svg { transform: rotate(-90deg); }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(16) > ul.nav-list { display: block; } </style> <script src="/assets/js/vendor/lunr.min.js"></script> <script src="/assets/js/just-the-docs.js"></script> <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Begin Jekyll SEO tag v2.8.0 --> <title>점진적인 개선 | Dev Open Library</title> <meta name="generator" content="Jekyll v3.10.0" /> <meta property="og:title" content="점진적인 개선" /> <meta property="og:locale" content="en" /> <meta name="description" content="A minimal, responsive and feature-rich Jekyll theme for technical writing." /> <meta property="og:description" content="A minimal, responsive and feature-rich Jekyll theme for technical writing." /> <link rel="canonical" href="http://localhost:4000/chapter14-incremental-improvement.html" /> <meta property="og:url" content="http://localhost:4000/chapter14-incremental-improvement.html" /> <meta property="og:site_name" content="Dev Open Library" /> <meta property="og:type" content="website" /> <meta name="twitter:card" content="summary" /> <meta property="twitter:title" content="점진적인 개선" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"A minimal, responsive and feature-rich Jekyll theme for technical writing.","headline":"점진적인 개선","url":"http://localhost:4000/chapter14-incremental-improvement.html"}</script> <!-- End Jekyll SEO tag --> </head> <body> <a class="skip-to-main" href="#main-content">Skip to main content</a> <svg xmlns="http://www.w3.org/2000/svg" class="d-none"> <symbol id="svg-link" viewBox="0 0 24 24"> <title>Link</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"> <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-menu" viewBox="0 0 24 24"> <title>Menu</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"> <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewBox="0 0 24 24"> <title>Expand</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"> <polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE --> <symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"> <title id="svg-external-link-title">(external link)</title> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line> </symbol> <symbol id="svg-doc" viewBox="0 0 24 24"> <title>Document</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"> <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> <symbol id="svg-search" viewBox="0 0 24 24"> <title>Search</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md --> <symbol id="svg-copy" viewBox="0 0 16 16"> <title>Copy</title> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/> <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/> </svg> </symbol> <symbol id="svg-copied" viewBox="0 0 16 16"> <title>Copied</title> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16"> <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/> </svg> </symbol> </svg> <div class="side-bar"> <div class="site-header" role="banner"> <a href="/" class="site-title lh-tight"> Dev Open Library </a> <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false"> <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg> </button> </div> <nav aria-label="Main" id="site-nav" class="site-nav"> <ul class="nav-list"><li class="nav-list-item"><a href="/chapter10-class.html" class="nav-list-link">10장 클래스</a></li><li class="nav-list-item"><a href="/chapter11-system.html" class="nav-list-link">11장 시스템</a></li><li class="nav-list-item"><a href="/chapter17-smell-and-heuristic.html" class="nav-list-link">17장 냄새와 휴리스틱</a></li><li class="nav-list-item"><a href="/chapter3-function.html" class="nav-list-link">3장 함수</a></li><li class="nav-list-item"><a href="/chapter5-consistent-formatting%20.html" class="nav-list-link">5장 형식 맞추기</a></li><li class="nav-list-item"><a href="/chpater6-obejct-and-data-structure.html" class="nav-list-link">6장 객체와 자료구조</a></li><li class="nav-list-item"><a href="/chapter7-error-handling.html" class="nav-list-link">7장 오류 처리</a></li><li class="nav-list-item"><a href="/chapter9-unit-test.html" class="nav-list-link">9장 단위 테스트</a></li><li class="nav-list-item"><a href="/chapter15-junit.html" class="nav-list-link">JUnit</a></li><li class="nav-list-item"><a href="/chapter16-SerialDate-refactoring.html" class="nav-list-link">SerialDate 리팩토링</a></li><li class="nav-list-item"><a href="/" class="nav-list-link">clean-code-study</a></li><li class="nav-list-item"><a href="/chapter8-boundary.html" class="nav-list-link">경계</a></li><li class="nav-list-item"><a href="/chapter1-clean-code.html" class="nav-list-link">깨끗한 코드</a></li><li class="nav-list-item"><a href="/chapter13-concurrency.html" class="nav-list-link">동시성</a></li><li class="nav-list-item"><a href="/appendix-concurrency.html" class="nav-list-link">동시성</a></li><li class="nav-list-item"><a href="/chapter14-incremental-improvement.html" class="nav-list-link">점진적인 개선</a></li><li class="nav-list-item"><a href="/chapter4-annotation.html" class="nav-list-link">주석</a></li><li class="nav-list-item"><a href="/chapter12-emergence.html" class="nav-list-link">창발성</a></li></ul> </nav> <footer class="site-footer"> This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll. </footer> </div> <div class="main" id="top"> <div id="main-header" class="main-header"> <div class="search" role="search"> <div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search Dev Open Library" aria-label="Search Dev Open Library" autocomplete="off"> <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label> </div> <div id="search-results" class="search-results"></div> </div> </div> <div class="main-content-wrap"> <div id="main-content" class="main-content"> <main> <h1 id="점진적인-개선"> <a href="#점진적인-개선" class="anchor-heading" aria-labelledby="점진적인-개선"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 점진적인 개선 </h1> <h2 id="args-구현"> <a href="#args-구현" class="anchor-heading" aria-labelledby="args-구현"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Args 구현 </h2> <p><code class="language-plaintext highlighter-rouge">Args.class</code> : 명령행 인수를 정의된 형식(schema)에 따라 파싱하고, 해당 값을 타입별로 쉽게 조회할 수 있게 해주는 유틸리티 클래스</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+	<span class="k">try</span> <span class="o">{</span>
+		<span class="nc">Args</span> <span class="n">arg</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Args</span><span class="o">(</span><span class="s">"l,p#,d*"</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+		<span class="kt">boolean</span> <span class="n">logging</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="na">getBoolean</span><span class="o">(</span><span class="sc">'l'</span><span class="o">);</span>
+		<span class="kt">int</span> <span class="n">port</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="sc">'p'</span><span class="o">);</span>
+		<span class="nc">String</span> <span class="n">directory</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="sc">'d'</span><span class="o">);</span>
+		<span class="n">executeApplication</span><span class="o">(</span><span class="n">logging</span><span class="o">,</span> <span class="n">port</span><span class="o">,</span> <span class="n">directory</span><span class="o">);</span>
+	<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ArgsException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"Argument error: %s\n"</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="na">errorMessage</span><span class="o">());</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>매개변수 <code class="language-plaintext highlighter-rouge">"l,p#,d*"</code>: 명령행 인수의 <strong>스키마.</strong> 각각의 문자는 인수의 이름과 타입을 나타낸다.</p> <ul> <li><code class="language-plaintext highlighter-rouge">l</code> → boolean 값 (<code class="language-plaintext highlighter-rouge">true/false</code>)</li> <li><code class="language-plaintext highlighter-rouge">p#</code> → 정수형 인수</li> <li><code class="language-plaintext highlighter-rouge">d*</code> → 문자열 인수</li> </ul> <p>두 번째 매개변수: 실제 명령행에서 받은 인수 배열. 파싱해서 각 타입에 맞게 저장한다.</p> <p>파싱이 성공적으로 끝나면 메서드(<code class="language-plaintext highlighter-rouge">getBoolean</code>, <code class="language-plaintext highlighter-rouge">getInt</code>, <code class="language-plaintext highlighter-rouge">getString</code>)를 통해 인수 값을 조회할 수 있다.</p> <h3 id="args-핵심"> <a href="#args-핵심" class="anchor-heading" aria-labelledby="args-핵심"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Args 핵심 </h3> <div class="table-wrapper"><table> <thead> <tr> <th>구성 요소</th> <th>책임</th> </tr> </thead> <tbody> <tr> <td><code class="language-plaintext highlighter-rouge">Args</code></td> <td>스키마 해석, 인수 파싱</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">ArgumentMarshaler</code></td> <td>인수 유형 인터페이스</td> </tr> <tr> <td><Type>`ArgumentMarshaler`</Type></td> <td>실제 파싱 로직</td> </tr> <tr> <td><code class="language-plaintext highlighter-rouge">ArgsException</code></td> <td>오류 처리</td> </tr> </tbody> </table></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Args</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">ArgumentMarshaler</span><span class="o">&gt;</span> <span class="n">marshalers</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;</span> <span class="n">argsFound</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">ListIterator</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">currentArgument</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="nf">Args</span><span class="o">(</span><span class="nc">String</span> <span class="n">schema</span><span class="o">,</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ArgsException</span> <span class="o">{</span>
+    <span class="n">marshalers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+    <span class="n">argsFound</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+    <span class="n">parseSchema</span><span class="o">(</span><span class="n">schema</span><span class="o">);</span>
+    <span class="n">parseArgumentStrings</span><span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">args</span><span class="o">));</span>
+  <span class="o">}</span>
+
+</code></pre></div></div> <ul> <li><code class="language-plaintext highlighter-rouge">marshalers</code>: 각 인수 이름(<code class="language-plaintext highlighter-rouge">l</code>, <code class="language-plaintext highlighter-rouge">p</code>, <code class="language-plaintext highlighter-rouge">d</code>)에 대응하는 처리 객체를 저장하는 Map</li> <li><code class="language-plaintext highlighter-rouge">argsFound</code>: 실제 입력에서 발견된 인수 목록을 추적하는 Set</li> <li><code class="language-plaintext highlighter-rouge">currentArgument</code>: 인수를 순회하며 파싱할 때 사용</li> </ul> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseSchema</span><span class="o">(</span><span class="nc">String</span> <span class="n">schema</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ArgsException</span> <span class="o">{</span>
+	  <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">element</span> <span class="o">:</span> <span class="n">schema</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">))</span>
+	    <span class="k">if</span> <span class="o">(</span><span class="n">element</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
+	      <span class="n">parseSchemaElement</span><span class="o">(</span><span class="n">element</span><span class="o">.</span><span class="na">trim</span><span class="o">());</span>
+	<span class="o">}</span>
+
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseSchemaElement</span><span class="o">(</span><span class="nc">String</span> <span class="n">element</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ArgsException</span> <span class="o">{</span>
+    <span class="kt">char</span> <span class="n">elementId</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">elementTail</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> <span class="n">validateSchemaElementId</span><span class="o">(</span><span class="n">elementId</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">elementTail</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+      <span class="n">marshalers</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">elementId</span><span class="o">,</span> <span class="k">new</span> <span class="nc">BooleanArgumentMarshaler</span><span class="o">());</span>
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">elementTail</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"*"</span><span class="o">))</span>
+      <span class="n">marshalers</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">elementId</span><span class="o">,</span> <span class="k">new</span> <span class="nc">StringArgumentMarshaler</span><span class="o">());</span>
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">elementTail</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"#"</span><span class="o">))</span>
+      <span class="n">marshalers</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">elementId</span><span class="o">,</span> <span class="k">new</span> <span class="nc">IntegerArgumentMarshaler</span><span class="o">());</span>
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">elementTail</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"##"</span><span class="o">))</span>
+      <span class="n">marshalers</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">elementId</span><span class="o">,</span> <span class="k">new</span> <span class="nc">DoubleArgumentMarshaler</span><span class="o">());</span>
+		<span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">elementTail</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"[*]"</span><span class="o">))</span>
+      <span class="n">marshalers</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">elementId</span><span class="o">,</span> <span class="k">new</span> <span class="nc">StringArrayArgumentMarshaler</span><span class="o">());</span>
+    <span class="k">else</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgsException</span><span class="o">(</span><span class="no">INVALID_ARGUMENT_FORMAT</span><span class="o">,</span> <span class="n">elementId</span><span class="o">,</span> <span class="n">elementTail</span><span class="o">);</span>
+	  <span class="o">}</span>
+	<span class="o">}</span>
+
+</code></pre></div></div> <ol> <li>형식 문자열은 쉼표로 구분된 각 인수 정의(<code class="language-plaintext highlighter-rouge">l</code>, <code class="language-plaintext highlighter-rouge">p#</code>, <code class="language-plaintext highlighter-rouge">d*</code> )로 나눈다.</li> <li><code class="language-plaintext highlighter-rouge">parseSchemaElement()</code>는 각 정의를 파싱하여 해당 타입에 맞는 <code class="language-plaintext highlighter-rouge">ArgumentMarshaler</code>를 <code class="language-plaintext highlighter-rouge">marshalers</code>에 등록한다.</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseArgumentStrings</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">argsList</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ArgsException</span> <span class="o">{</span>
+  <span class="k">for</span> <span class="o">(</span><span class="n">currentArgument</span> <span class="o">=</span> <span class="n">argsList</span><span class="o">.</span><span class="na">listIterator</span><span class="o">();</span> <span class="n">currentArgument</span><span class="o">.</span><span class="na">hasNext</span><span class="o">();)</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">argString</span> <span class="o">=</span> <span class="n">currentArgument</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">argString</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">"-"</span><span class="o">))</span> <span class="o">{</span>
+      <span class="n">parseArgumentCharacters</span><span class="o">(</span><span class="n">argString</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+      <span class="n">currentArgument</span><span class="o">.</span><span class="na">previous</span><span class="o">();</span>
+      <span class="k">break</span><span class="o">;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+</code></pre></div></div> <p>실제 명령행 인수를 순회하면서 <code class="language-plaintext highlighter-rouge">-</code>로 시작하는 항목을 발견하면 해당 인수 문자를 분해해 파싱한다.</p> <ul> <li><code class="language-plaintext highlighter-rouge">p 8080</code>이라면 <code class="language-plaintext highlighter-rouge">p</code>를 찾아서 <code class="language-plaintext highlighter-rouge">IntegerArgumentMarshaler</code>에 값을 설정한다.</li> </ul> <p><strong>ArgumentMarshaler 인터페이스와 파생 클래스</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ArgumentMarshaler</span> <span class="o">{</span>
+  <span class="kt">void</span> <span class="nf">set</span><span class="o">(</span><span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">currentArgument</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ArgsException</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>모든 인수 타입은 이 인터페이스를 구현한다.</p> <p>각 타입별 구현 클래스는 다음과 같다:</p> <ul> <li><code class="language-plaintext highlighter-rouge">BooleanArgumentMarshaler</code> : 단순히 <code class="language-plaintext highlighter-rouge">true</code>로 설정</li> <li><code class="language-plaintext highlighter-rouge">StringArgumentMarshaler</code> : 다음 인수를 문자열로 저장</li> <li><code class="language-plaintext highlighter-rouge">IntegerArgumentMarshaler</code> : 다음 인수를 정수로 변환</li> <li><code class="language-plaintext highlighter-rouge">DoubleArgumentMarshaler</code> : 다음 인수를 실수로 변환</li> <li><code class="language-plaintext highlighter-rouge">StringArrayArgumentMarshaler</code> : 문자열 배열로 저장 (<code class="language-plaintext highlighter-rouge">[*]</code> 형식)</li> </ul> <p>각 클래스는 <code class="language-plaintext highlighter-rouge">getValue()</code>라는 static 메서드로 결과를 조회할 수 있도록 한다.</p> <p>독자는 코드를 위에서 아래로 순차적으로 읽을 수 있다.</p> <p><strong>ArgsException : 에러 처리</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArgsException</span> <span class="kd">extends</span> <span class="nc">Exception</span> <span class="o">{</span>
+  <span class="c1">// ...</span>
+  <span class="kd">public</span> <span class="kd">enum</span> <span class="nc">ErrorCode</span> <span class="o">{</span>
+    <span class="no">OK</span><span class="o">,</span> <span class="no">INVALID_ARGUMENT_FORMAT</span><span class="o">,</span> <span class="no">UNEXPECTED_ARGUMENT</span><span class="o">,</span> <span class="no">INVALID_ARGUMENT_NAME</span><span class="o">,</span>
+    <span class="no">MISSING_STRING</span><span class="o">,</span> <span class="no">MISSING_INTEGER</span><span class="o">,</span> <span class="no">INVALID_INTEGER</span><span class="o">,</span> <span class="no">MISSING_DOUBLE</span><span class="o">,</span> <span class="no">INVALID_DOUBLE</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">errorMessage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">switch</span> <span class="o">(</span><span class="n">errorCode</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nl">OK:</span> <span class="k">return</span> <span class="s">"TILT: Should not get here."</span><span class="o">;</span>
+      <span class="k">case</span> <span class="nl">UNEXPECTED_ARGUMENT:</span> <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Argument -%c unexpected."</span><span class="o">,</span> <span class="n">errorArgumentId</span><span class="o">);</span>
+      <span class="c1">// 생략...</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>에러 상황을 명확히 구분하기 위해 열거형 <code class="language-plaintext highlighter-rouge">ErrorCode</code>를 사용하며, 사용자에게 전달할 수 있는 에러 메시지</p> <p><strong>설계 특징</strong></p> <ul> <li><strong>가독성이 좋다</strong>: 위에서 아래로 순차적으로 읽히며 흐름이 자연스럽다.</li> <li><strong>확장에 유리하다</strong>: 새 인수 유형을 추가하려면 <code class="language-plaintext highlighter-rouge">ArgumentMarshaler</code>를 확장하고 <code class="language-plaintext highlighter-rouge">parseSchemaElement()</code>에 한 줄만 추가하면 된다.</li> <li><strong>책임 분리</strong>가 명확하다: 스키마 파싱, 인수 파싱, 타입별 처리, 예외 처리 등이 잘 나뉘어 있다.</li> </ul> <h3 id="어떻게-짰느냐고"> <a href="#어떻게-짰느냐고" class="anchor-heading" aria-labelledby="어떻게-짰느냐고"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 어떻게 짰느냐고? </h3> <p>프로그래밍은 과학이라기보다는 공예에 가깝다.</p> <p>처음부터 깔끔한 코드가 나오는 경우는 거의 없다. 일단 동작하는 지저분한 코드를 짠 뒤, 계속해서 다듬고 정리해서 최종 버전을 만든다.</p> <p>대부분의 초보자는 코드가 “돌아가기만” 하면 만족하고 다음 단계로 넘어간다.</p> <p>하지만 숙련된 개발자는 <strong>돌아가는 코드가 아니라, 읽기 좋고 고치기 좋은 코드</strong>가 진짜 코드라는 걸 안다.</p> <h2 id="args-1차-초안"> <a href="#args-1차-초안" class="anchor-heading" aria-labelledby="args-1차-초안"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Args: 1차 초안 </h2> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.text.ParseException</span><span class="o">;</span> 
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Args</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">schema</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">valid</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;</span> <span class="n">unexpectedArguments</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TreeSet</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;();</span> 
+  <span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Boolean</span><span class="o">&gt;</span> <span class="n">booleanArgs</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Boolean</span><span class="o">&gt;();</span>
+  <span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">stringArgs</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;();</span> 
+  <span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">intArgs</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;();</span> 
+  <span class="kd">private</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;</span> <span class="n">argsFound</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;();</span>
+  <span class="kd">private</span> <span class="kt">int</span> <span class="n">currentArgument</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kt">char</span> <span class="n">errorArgumentId</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">errorParameter</span> <span class="o">=</span> <span class="s">"TILT"</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">ErrorCode</span> <span class="n">errorCode</span> <span class="o">=</span> <span class="nc">ErrorCode</span><span class="o">.</span><span class="na">OK</span><span class="o">;</span>
+  
+  <span class="kd">private</span> <span class="kd">enum</span> <span class="nc">ErrorCode</span> <span class="o">{</span>
+    <span class="no">OK</span><span class="o">,</span> <span class="no">MISSING_STRING</span><span class="o">,</span> <span class="no">MISSING_INTEGER</span><span class="o">,</span> <span class="no">INVALID_INTEGER</span><span class="o">,</span> <span class="no">UNEXPECTED_ARGUMENT</span><span class="o">}</span>
+    
+  <span class="kd">public</span> <span class="nf">Args</span><span class="o">(</span><span class="nc">String</span> <span class="n">schema</span><span class="o">,</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ParseException</span> <span class="o">{</span> 
+    <span class="k">this</span><span class="o">.</span><span class="na">schema</span> <span class="o">=</span> <span class="n">schema</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">args</span> <span class="o">=</span> <span class="n">args</span><span class="o">;</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">parse</span><span class="o">();</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">parse</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">ParseException</span> <span class="o">{</span> 
+    <span class="k">if</span> <span class="o">(</span><span class="n">schema</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> 
+    <span class="n">parseSchema</span><span class="o">();</span> 
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="n">parseArguments</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ArgsException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">valid</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">parseSchema</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">ParseException</span> <span class="o">{</span> 
+    <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">element</span> <span class="o">:</span> <span class="n">schema</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">","</span><span class="o">))</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">element</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">trimmedElement</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="na">trim</span><span class="o">();</span> 
+        <span class="n">parseSchemaElement</span><span class="o">(</span><span class="n">trimmedElement</span><span class="o">);</span>
+      <span class="o">}</span> 
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> 
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseSchemaElement</span><span class="o">(</span><span class="nc">String</span> <span class="n">element</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ParseException</span> <span class="o">{</span> 
+    <span class="kt">char</span> <span class="n">elementId</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">elementTail</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span> 
+    <span class="n">validateSchemaElementId</span><span class="o">(</span><span class="n">elementId</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">isBooleanSchemaElement</span><span class="o">(</span><span class="n">elementTail</span><span class="o">))</span> 
+      <span class="n">parseBooleanSchemaElement</span><span class="o">(</span><span class="n">elementId</span><span class="o">);</span>
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">isStringSchemaElement</span><span class="o">(</span><span class="n">elementTail</span><span class="o">))</span> 
+      <span class="n">parseStringSchemaElement</span><span class="o">(</span><span class="n">elementId</span><span class="o">);</span>
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">isIntegerSchemaElement</span><span class="o">(</span><span class="n">elementTail</span><span class="o">))</span> 
+      <span class="n">parseIntegerSchemaElement</span><span class="o">(</span><span class="n">elementId</span><span class="o">);</span>
+    <span class="k">else</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nf">ParseException</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Argument: %c has invalid format: %s."</span><span class="o">,</span> 
+        <span class="n">elementId</span><span class="o">,</span> <span class="n">elementTail</span><span class="o">),</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span> 
+  <span class="o">}</span>
+    
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">validateSchemaElementId</span><span class="o">(</span><span class="kt">char</span> <span class="n">elementId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ParseException</span> <span class="o">{</span> 
+    <span class="k">if</span> <span class="o">(!</span><span class="nc">Character</span><span class="o">.</span><span class="na">isLetter</span><span class="o">(</span><span class="n">elementId</span><span class="o">))</span> <span class="o">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nf">ParseException</span><span class="o">(</span><span class="s">"Bad character:"</span> <span class="o">+</span> <span class="n">elementId</span> <span class="o">+</span> <span class="s">"in Args format: "</span> <span class="o">+</span> <span class="n">schema</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseBooleanSchemaElement</span><span class="o">(</span><span class="kt">char</span> <span class="n">elementId</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="n">booleanArgs</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">elementId</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseIntegerSchemaElement</span><span class="o">(</span><span class="kt">char</span> <span class="n">elementId</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="n">intArgs</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">elementId</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseStringSchemaElement</span><span class="o">(</span><span class="kt">char</span> <span class="n">elementId</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="n">stringArgs</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">elementId</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isStringSchemaElement</span><span class="o">(</span><span class="nc">String</span> <span class="n">elementTail</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">elementTail</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"*"</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isBooleanSchemaElement</span><span class="o">(</span><span class="nc">String</span> <span class="n">elementTail</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">elementTail</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isIntegerSchemaElement</span><span class="o">(</span><span class="nc">String</span> <span class="n">elementTail</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">elementTail</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"#"</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">parseArguments</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">ArgsException</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">currentArgument</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">currentArgument</span> <span class="o">&lt;</span> <span class="n">args</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">currentArgument</span><span class="o">++)</span> <span class="o">{</span>
+      <span class="nc">String</span> <span class="n">arg</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="n">currentArgument</span><span class="o">];</span>
+      <span class="n">parseArgument</span><span class="o">(</span><span class="n">arg</span><span class="o">);</span> 
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> 
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseArgument</span><span class="o">(</span><span class="nc">String</span> <span class="n">arg</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ArgsException</span> <span class="o">{</span> 
+    <span class="k">if</span> <span class="o">(</span><span class="n">arg</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">"-"</span><span class="o">))</span>
+      <span class="n">parseElements</span><span class="o">(</span><span class="n">arg</span><span class="o">);</span> 
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseElements</span><span class="o">(</span><span class="nc">String</span> <span class="n">arg</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ArgsException</span> <span class="o">{</span> 
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arg</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span>
+      <span class="n">parseElement</span><span class="o">(</span><span class="n">arg</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">));</span> 
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseElement</span><span class="o">(</span><span class="kt">char</span> <span class="n">argChar</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ArgsException</span> <span class="o">{</span> 
+    <span class="k">if</span> <span class="o">(</span><span class="n">setArgument</span><span class="o">(</span><span class="n">argChar</span><span class="o">))</span>
+      <span class="n">argsFound</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">argChar</span><span class="o">);</span> 
+    <span class="k">else</span> 
+      <span class="n">unexpectedArguments</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">argChar</span><span class="o">);</span> 
+      <span class="n">errorCode</span> <span class="o">=</span> <span class="nc">ErrorCode</span><span class="o">.</span><span class="na">UNEXPECTED_ARGUMENT</span><span class="o">;</span> 
+      <span class="n">valid</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">setArgument</span><span class="o">(</span><span class="kt">char</span> <span class="n">argChar</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ArgsException</span> <span class="o">{</span> 
+    <span class="k">if</span> <span class="o">(</span><span class="n">isBooleanArg</span><span class="o">(</span><span class="n">argChar</span><span class="o">))</span>
+      <span class="n">setBooleanArg</span><span class="o">(</span><span class="n">argChar</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span> 
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">isStringArg</span><span class="o">(</span><span class="n">argChar</span><span class="o">))</span>
+      <span class="n">setStringArg</span><span class="o">(</span><span class="n">argChar</span><span class="o">);</span> 
+    <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">isIntArg</span><span class="o">(</span><span class="n">argChar</span><span class="o">))</span>
+      <span class="n">setIntArg</span><span class="o">(</span><span class="n">argChar</span><span class="o">);</span> 
+    <span class="k">else</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> 
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isIntArg</span><span class="o">(</span><span class="kt">char</span> <span class="n">argChar</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">intArgs</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">argChar</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">setIntArg</span><span class="o">(</span><span class="kt">char</span> <span class="n">argChar</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ArgsException</span> <span class="o">{</span> 
+    <span class="n">currentArgument</span><span class="o">++;</span>
+    <span class="nc">String</span> <span class="n">parameter</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="n">parameter</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="n">currentArgument</span><span class="o">];</span>
+      <span class="n">intArgs</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">argChar</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Integer</span><span class="o">(</span><span class="n">parameter</span><span class="o">));</span> 
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ArrayIndexOutOfBoundsException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">valid</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+      <span class="n">errorArgumentId</span> <span class="o">=</span> <span class="n">argChar</span><span class="o">;</span>
+      <span class="n">errorCode</span> <span class="o">=</span> <span class="nc">ErrorCode</span><span class="o">.</span><span class="na">MISSING_INTEGER</span><span class="o">;</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgsException</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">NumberFormatException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">valid</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+      <span class="n">errorArgumentId</span> <span class="o">=</span> <span class="n">argChar</span><span class="o">;</span> 
+      <span class="n">errorParameter</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">;</span>
+      <span class="n">errorCode</span> <span class="o">=</span> <span class="nc">ErrorCode</span><span class="o">.</span><span class="na">INVALID_INTEGER</span><span class="o">;</span> 
+      <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgsException</span><span class="o">();</span>
+    <span class="o">}</span> 
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">setStringArg</span><span class="o">(</span><span class="kt">char</span> <span class="n">argChar</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ArgsException</span> <span class="o">{</span> 
+    <span class="n">currentArgument</span><span class="o">++;</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="n">stringArgs</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">argChar</span><span class="o">,</span> <span class="n">args</span><span class="o">[</span><span class="n">currentArgument</span><span class="o">]);</span> 
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ArrayIndexOutOfBoundsException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">valid</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+      <span class="n">errorArgumentId</span> <span class="o">=</span> <span class="n">argChar</span><span class="o">;</span>
+      <span class="n">errorCode</span> <span class="o">=</span> <span class="nc">ErrorCode</span><span class="o">.</span><span class="na">MISSING_STRING</span><span class="o">;</span> 
+      <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgsException</span><span class="o">();</span>
+    <span class="o">}</span> 
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isStringArg</span><span class="o">(</span><span class="kt">char</span> <span class="n">argChar</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">stringArgs</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">argChar</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">setBooleanArg</span><span class="o">(</span><span class="kt">char</span> <span class="n">argChar</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="n">booleanArgs</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">argChar</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isBooleanArg</span><span class="o">(</span><span class="kt">char</span> <span class="n">argChar</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">booleanArgs</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">argChar</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">cardinality</span><span class="o">()</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">argsFound</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+  <span class="o">}</span>
+  
+  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">usage</span><span class="o">()</span> <span class="o">{</span> 
+    <span class="k">if</span> <span class="o">(</span><span class="n">schema</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
+      <span class="k">return</span> <span class="s">"-["</span> <span class="o">+</span> <span class="n">schema</span> <span class="o">+</span> <span class="s">"]"</span><span class="o">;</span> 
+    <span class="k">else</span>
+      <span class="k">return</span> <span class="s">""</span><span class="o">;</span> 
+  <span class="o">}</span>
+  
+  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">errorMessage</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span> 
+    <span class="k">switch</span> <span class="o">(</span><span class="n">errorCode</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nl">OK:</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">Exception</span><span class="o">(</span><span class="s">"TILT: Should not get here."</span><span class="o">);</span>
+      <span class="k">case</span> <span class="nl">UNEXPECTED_ARGUMENT:</span>
+        <span class="k">return</span> <span class="nf">unexpectedArgumentMessage</span><span class="o">();</span>
+      <span class="k">case</span> <span class="nl">MISSING_STRING:</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Could not find string parameter for -%c."</span><span class="o">,</span> <span class="n">errorArgumentId</span><span class="o">);</span>
+      <span class="k">case</span> <span class="nl">INVALID_INTEGER:</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Argument -%c expects an integer but was '%s'."</span><span class="o">,</span> <span class="n">errorArgumentId</span><span class="o">,</span> <span class="n">errorParameter</span><span class="o">);</span>
+      <span class="k">case</span> <span class="nl">MISSING_INTEGER:</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Could not find integer parameter for -%c."</span><span class="o">,</span> <span class="n">errorArgumentId</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="s">""</span><span class="o">;</span> 
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="nc">String</span> <span class="nf">unexpectedArgumentMessage</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">StringBuffer</span> <span class="n">message</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">(</span><span class="s">"Argument(s) -"</span><span class="o">);</span> 
+    <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">unexpectedArguments</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">message</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">c</span><span class="o">);</span> 
+    <span class="o">}</span>
+    <span class="n">message</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">" unexpected."</span><span class="o">);</span>
+    
+    <span class="k">return</span> <span class="n">message</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span> 
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">falseIfNull</span><span class="o">(</span><span class="nc">Boolean</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">b</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kt">int</span> <span class="nf">zeroIfNull</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">i</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">i</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="n">i</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="nc">String</span> <span class="nf">blankIfNull</span><span class="o">(</span><span class="nc">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">s</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="s">""</span> <span class="o">:</span> <span class="n">s</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getString</span><span class="o">(</span><span class="kt">char</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="nf">blankIfNull</span><span class="o">(</span><span class="n">stringArgs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">arg</span><span class="o">));</span>
+  <span class="o">}</span>
+  
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getInt</span><span class="o">(</span><span class="kt">char</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nf">zeroIfNull</span><span class="o">(</span><span class="n">intArgs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">arg</span><span class="o">));</span>
+  <span class="o">}</span>
+  
+  <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">getBoolean</span><span class="o">(</span><span class="kt">char</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="nf">falseIfNull</span><span class="o">(</span><span class="n">booleanArgs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">arg</span><span class="o">));</span>
+  <span class="o">}</span>
+  
+  <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">has</span><span class="o">(</span><span class="kt">char</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">argsFound</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">arg</span><span class="o">);</span>
+  <span class="o">}</span>
+  
+  <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isValid</span><span class="o">()</span> <span class="o">{</span> 
+    <span class="k">return</span> <span class="n">valid</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+  <span class="kd">private</span> <span class="kd">class</span> <span class="nc">ArgsException</span> <span class="kd">extends</span> <span class="nc">Exception</span> <span class="o">{</span>
+  <span class="o">}</span> 
+<span class="o">}</span>
+</code></pre></div></div> <h3 id="그래서-멈췄다"> <a href="#그래서-멈췄다" class="anchor-heading" aria-labelledby="그래서-멈췄다"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 그래서 멈췄다 </h3> <ul> <li>타입별 처리 로직이 스키마 파싱, 인수 파싱, 값 조회의 세 곳에 중복되어 있음</li> <li>새로운 타입을 추가하려면 세 군데 이상 수정해야 함</li> <li><code class="language-plaintext highlighter-rouge">Map&lt;Character, Type&gt;</code>이 여러 개 존재해 응집도가 낮고 중복됨</li> <li><code class="language-plaintext highlighter-rouge">ArgsException</code>이 실질적인 정보 전달에 활용되지 않음</li> </ul> <p>인수 유형은 다양하지만 모두가 유사한 메서드를 제공. 👉 인터페이스스 <strong>ArgumentMarshaler 탄생</strong></p> <h3 id="점진적으로-개선하다"> <a href="#점진적으로-개선하다" class="anchor-heading" aria-labelledby="점진적으로-개선하다"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 점진적으로 개선하다 </h3> <p>프로그램을 망치는 가장 빠른 방법 중 하나는 ‘개선’이라는 이름 아래 구조를 무리하게 뒤엎는 것이다. 그렇게 구조를 크게 바꾼 프로그램은 대개 다시는 정상으로 돌아오지 못한다. 변경 후에도 시스템이 이전과 <strong>정확히 같은 방식으로 동작하는 것</strong>이 정말 어려워지기 때문이다.</p> <p>👉 <strong>테스트 주도 개발(TDD)</strong></p> <p>TDD는 항상 시스템이 <strong>정상적으로 동작해야 한다</strong>는 원칙을 기반으로 한다. 즉, 어떤 변경을 하든 간에 프로그램은 여전히 잘 돌아가야 한다. 변경 이후에도 프로그램이 이전과 <strong>동일한 결과를 보장</strong>해야만 한다.</p> <p>이걸 보장하려면 언제든 실행 가능한 자동화 테스트가 필수다.</p> <p>리팩토링을 할 때는 코드를 최소로 건드리는, 가장 단순한 변경 부터 시작한다. 구조 변경을 최소화하면서도 코드를 점점 더 좋은 방향으로 개선해 나가도 TDD 덕분에 언제든 테스트로 변경이 안전함을 검증할 수 있었고, 덕분에 과감한 구조 개선도 시도할 수 있다.</p> <ol> <li><code class="language-plaintext highlighter-rouge">Map&lt;Character, Boolean&gt;</code>→ <code class="language-plaintext highlighter-rouge">Map&lt;Character, ArgumentMarshaler&gt;</code>로 변경</li> </ol> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 전: boolean 값을 직접 저장</span>
+<span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">Boolean</span><span class="o">&gt;</span> <span class="n">booleanArgs</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+
+<span class="c1">// 후: ArgumentMarshaler 객체 저장</span>
+<span class="kd">private</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span> <span class="nc">ArgumentMarshaler</span><span class="o">&gt;</span> <span class="n">booleanArgs</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 전: 스키마 요소 파싱 시 true로 저장</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseBooleanSchemaElement</span><span class="o">(</span><span class="kt">char</span> <span class="n">elementId</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">booleanArgs</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">elementId</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span> <span class="c1">// 기본값</span>
+<span class="o">}</span>
+
+<span class="c1">// 후: BooleanArgumentMarshaler 객체 저장</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseBooleanSchemaElement</span><span class="o">(</span><span class="kt">char</span> <span class="n">elementId</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">booleanArgs</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">elementId</span><span class="o">,</span> <span class="k">new</span> <span class="nc">BooleanArgumentMarshaler</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 전: 값 설정</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">setBooleanArg</span><span class="o">(</span><span class="kt">char</span> <span class="n">argChar</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">booleanArgs</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">argChar</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// 후: BooleanArgumentMarshaler 내부에 값 설정</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">setBooleanArg</span><span class="o">(</span><span class="kt">char</span> <span class="n">argChar</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">booleanArgs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">argChar</span><span class="o">).</span><span class="na">setBoolean</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 전: 값 조회</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">getBoolean</span><span class="o">(</span><span class="kt">char</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nc">Boolean</span> <span class="n">value</span> <span class="o">=</span> <span class="n">booleanArgs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">arg</span><span class="o">);</span>
+  <span class="k">return</span> <span class="n">value</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">value</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="c1">// 후: BooleanArgumentMarshaler에서 값 꺼내기</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">getBoolean</span><span class="o">(</span><span class="kt">char</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span>
+  <span class="nc">ArgumentMarshaler</span> <span class="n">am</span> <span class="o">=</span> <span class="n">booleanArgs</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">arg</span><span class="o">);</span>
+  <span class="k">return</span> <span class="n">am</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">am</span><span class="o">.</span><span class="na">getBoolean</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div> <h2 id="string-인수"> <a href="#string-인수" class="anchor-heading" aria-labelledby="string-인수"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> String 인수 </h2> <p>나머지 인수 추가 과정은 boolean 인수 처리 방식과 유사하다.</p> <ol> <li>우선 <code class="language-plaintext highlighter-rouge">HashMap</code>에 관련 정보를 저장하도록 하고, <code class="language-plaintext highlighter-rouge">parse</code>, <code class="language-plaintext highlighter-rouge">set</code>, <code class="language-plaintext highlighter-rouge">get</code> 함수를 수정</li> <li>모든 인수 유형에 대한 처리를 <code class="language-plaintext highlighter-rouge">ArgumentMarshaler</code>에 넣고,</li> <li><strong>파생 클래스로 분리</strong></li> </ol> <p>이렇게 하면 프로그램 구조를 점진적으로 개선하면서도 정상 동작을 유지할 수 있다.</p> <p><strong>기존 예외 코드의 문제</strong></p> <ul> <li>코드가 흉하고 읽기 어렵다.</li> <li>Args 클래스와 무관한 책임을 떠안고 있다.</li> <li><code class="language-plaintext highlighter-rouge">ParseException</code>을 던지지만, 이는 <code class="language-plaintext highlighter-rouge">Args</code> 모듈에 소속되지 않는다.</li> </ul> <p>👉 모든 예외 처리를 <code class="language-plaintext highlighter-rouge">ArgsException</code>이라는 독립 클래스로</p> <ul> <li><code class="language-plaintext highlighter-rouge">Args</code> 모듈과 예외/오류 처리 로직을 분리</li> </ul> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArgsException</span> <span class="kd">extends</span> <span class="nc">Exception</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kt">char</span> <span class="n">errorArgumentId</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">String</span> <span class="n">errorParameter</span> <span class="o">=</span> <span class="s">"TILT"</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nc">ErrorCode</span> <span class="n">errorCode</span> <span class="o">=</span> <span class="nc">ErrorCode</span><span class="o">.</span><span class="na">OK</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="nf">ArgsException</span><span class="o">()</span> <span class="o">{}</span>
+
+  <span class="kd">public</span> <span class="nf">ArgsException</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span><span class="kd">super</span><span class="o">(</span><span class="n">message</span><span class="o">);}</span>
+
+  <span class="kd">public</span> <span class="nf">ArgsException</span><span class="o">(</span><span class="nc">ErrorCode</span> <span class="n">errorCode</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">errorCode</span> <span class="o">=</span> <span class="n">errorCode</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="nf">ArgsException</span><span class="o">(</span><span class="nc">ErrorCode</span> <span class="n">errorCode</span><span class="o">,</span> <span class="nc">String</span> <span class="n">errorParameter</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">errorCode</span> <span class="o">=</span> <span class="n">errorCode</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">errorParameter</span> <span class="o">=</span> <span class="n">errorParameter</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="nf">ArgsException</span><span class="o">(</span><span class="nc">ErrorCode</span> <span class="n">errorCode</span><span class="o">,</span> <span class="kt">char</span> <span class="n">errorArgumentId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">errorParameter</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">errorCode</span> <span class="o">=</span> <span class="n">errorCode</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">errorParameter</span> <span class="o">=</span> <span class="n">errorParameter</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">errorArgumentId</span> <span class="o">=</span> <span class="n">errorArgumentId</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kt">char</span> <span class="nf">getErrorArgumentId</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">errorArgumentId</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setErrorArgumentId</span><span class="o">(</span><span class="kt">char</span> <span class="n">errorArgumentId</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">errorArgumentId</span> <span class="o">=</span> <span class="n">errorArgumentId</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getErrorParameter</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">errorParameter</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setErrorParameter</span><span class="o">(</span><span class="nc">String</span> <span class="n">errorParameter</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">errorParameter</span> <span class="o">=</span> <span class="n">errorParameter</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="nc">ErrorCode</span> <span class="nf">getErrorCode</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">errorCode</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setErrorCode</span><span class="o">(</span><span class="nc">ErrorCode</span> <span class="n">errorCode</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">errorCode</span> <span class="o">=</span> <span class="n">errorCode</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="nc">String</span> <span class="nf">errorMessage</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="k">switch</span> <span class="o">(</span><span class="n">errorCode</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">case</span> <span class="nl">OK:</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">Exception</span><span class="o">(</span><span class="s">"TILT: Should not get here."</span><span class="o">);</span>
+      <span class="k">case</span> <span class="nl">UNEXPECTED_ARGUMENT:</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Argument -%c unexpected."</span><span class="o">,</span> <span class="n">errorArgumentId</span><span class="o">);</span>
+      <span class="k">case</span> <span class="nl">MISSING_STRING:</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Could not find string parameter for -%c."</span><span class="o">,</span> <span class="n">errorArgumentId</span><span class="o">);</span>
+      <span class="k">case</span> <span class="nl">INVALID_INTEGER:</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Argument -%c expects an integer but was '%s'."</span><span class="o">,</span> <span class="n">errorArgumentId</span><span class="o">,</span> <span class="n">errorParameter</span><span class="o">);</span>
+      <span class="k">case</span> <span class="nl">MISSING_INTEGER:</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Could not find integer parameter for -%c."</span><span class="o">,</span> <span class="n">errorArgumentId</span><span class="o">);</span>
+      <span class="k">case</span> <span class="nl">INVALID_DOUBLE:</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Argument -%c expects a double but was '%s'."</span><span class="o">,</span> <span class="n">errorArgumentId</span><span class="o">,</span> <span class="n">errorParameter</span><span class="o">);</span>
+      <span class="k">case</span> <span class="nl">MISSING_DOUBLE:</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Could not find double parameter for -%c."</span><span class="o">,</span> <span class="n">errorArgumentId</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="s">""</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">enum</span> <span class="nc">ErrorCode</span> <span class="o">{</span>
+    <span class="no">OK</span><span class="o">,</span> <span class="no">INVALID_FORMAT</span><span class="o">,</span> <span class="no">UNEXPECTED_ARGUMENT</span><span class="o">,</span> <span class="no">INVALID_ARGUMENT_NAME</span><span class="o">,</span> <span class="no">MISSING_STRING</span><span class="o">,</span>
+    <span class="no">MISSING_INTEGER</span><span class="o">,</span> <span class="no">INVALID_INTEGER</span><span class="o">,</span>
+    <span class="no">MISSING_DOUBLE</span><span class="o">,</span> <span class="no">INVALID_DOUBLE</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <ul> <li>에러 코드(<code class="language-plaintext highlighter-rouge">ErrorCode</code>)를 열거형으로 정의.</li> <li>인수 식별자, 파라미터 값을 저장.</li> <li>오류 메시지를 생성하는 <code class="language-plaintext highlighter-rouge">errorMessage()</code> 메서드 포함.</li> <li>SRP(Single Responsibility Principle) 준수</li> </ul> <h2 id="결론"> <a href="#결론" class="anchor-heading" aria-labelledby="결론"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>결론</strong> </h2> <p>그저 돌아가기만 하는 코드는 부족하다.</p> <p>나쁜 코드보다 개발 프로젝트에 더 심각한 악영향을 끼친다.</p> <ul> <li>나쁜 일정은 다시 계획하면 된다.</li> <li>나쁜 요구사항은 다시 정의하면 된다.</li> <li>나쁜 팀 역학은 복구할 수 있다.</li> </ul> <p>시간이 지날수록 무게가 늘어나고 팀의 발목을 잡는다.</p> <p>물론 나쁜 코드도 깨끗한 코드로 바꿀 수는 있지만 그 비용은 크다.</p> <ul> <li>코드가 썩어가면서 뒤엉키는 모듈들</li> <li>수없이 생기는 숨겨진 의존성</li> <li>그 의존성을 찾아 깨는 데는 막대한 시간과 인내</li> </ul> <p><strong>처음부터 깨끗하게 유지하는 것은 상대적으로 쉽다.</strong></p> <p>아침에 엉망으로 만든 코드를 오후에 정리하는 건 어렵지 않다. 더 나아가, 5분 전에 만든 엉망진창 코드는 바로 지금 정리하는 게 가장 쉽다.</p> <p><strong>코드는 언제나 최대한 깔끔하고 단순하게 유지해야 한다.</strong> 절대로 썩어가도록 방치해서는 안 된다.</p> </main> </div> </div> <div class="search-overlay"></div> </div> </body> </html>

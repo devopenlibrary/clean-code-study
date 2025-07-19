@@ -1,0 +1,212 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <link rel="stylesheet" href="/assets/css/just-the-docs-default.css"> <link rel="stylesheet" href="/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet"> <style id="jtd-nav-activation"> .site-nav > ul.nav-list:first-child > li:not(:nth-child(6)) > a, .site-nav > ul.nav-list:first-child > li > ul > li a { background-image: none; } .site-nav > ul.nav-list:not(:first-child) a, .site-nav li.external a { background-image: none; } .site-nav > ul.nav-list:first-child > li:nth-child(6) > a { font-weight: 600; text-decoration: none; }.site-nav > ul.nav-list:first-child > li:nth-child(6) > button svg { transform: rotate(-90deg); }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(6) > ul.nav-list { display: block; } </style> <script src="/assets/js/vendor/lunr.min.js"></script> <script src="/assets/js/just-the-docs.js"></script> <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Begin Jekyll SEO tag v2.8.0 --> <title>6장 객체와 자료구조 | Dev Open Library</title> <meta name="generator" content="Jekyll v3.10.0" /> <meta property="og:title" content="6장 객체와 자료구조" /> <meta property="og:locale" content="en" /> <meta name="description" content="A minimal, responsive and feature-rich Jekyll theme for technical writing." /> <meta property="og:description" content="A minimal, responsive and feature-rich Jekyll theme for technical writing." /> <link rel="canonical" href="http://localhost:4000/chpater6-obejct-and-data-structure.html" /> <meta property="og:url" content="http://localhost:4000/chpater6-obejct-and-data-structure.html" /> <meta property="og:site_name" content="Dev Open Library" /> <meta property="og:type" content="website" /> <meta name="twitter:card" content="summary" /> <meta property="twitter:title" content="6장 객체와 자료구조" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"WebPage","description":"A minimal, responsive and feature-rich Jekyll theme for technical writing.","headline":"6장 객체와 자료구조","url":"http://localhost:4000/chpater6-obejct-and-data-structure.html"}</script> <!-- End Jekyll SEO tag --> </head> <body> <a class="skip-to-main" href="#main-content">Skip to main content</a> <svg xmlns="http://www.w3.org/2000/svg" class="d-none"> <symbol id="svg-link" viewBox="0 0 24 24"> <title>Link</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"> <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol> <symbol id="svg-menu" viewBox="0 0 24 24"> <title>Menu</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"> <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol> <symbol id="svg-arrow-right" viewBox="0 0 24 24"> <title>Expand</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"> <polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol> <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE --> <symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"> <title id="svg-external-link-title">(external link)</title> <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line> </symbol> <symbol id="svg-doc" viewBox="0 0 24 24"> <title>Document</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"> <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline> </svg> </symbol> <symbol id="svg-search" viewBox="0 0 24 24"> <title>Search</title> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"> <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line> </svg> </symbol> <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md --> <symbol id="svg-copy" viewBox="0 0 16 16"> <title>Copy</title> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16"> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/> <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/> </svg> </symbol> <symbol id="svg-copied" viewBox="0 0 16 16"> <title>Copied</title> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16"> <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/> <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/> </svg> </symbol> </svg> <div class="side-bar"> <div class="site-header" role="banner"> <a href="/" class="site-title lh-tight"> Dev Open Library </a> <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false"> <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg> </button> </div> <nav aria-label="Main" id="site-nav" class="site-nav"> <ul class="nav-list"><li class="nav-list-item"><a href="/chapter10-class.html" class="nav-list-link">10장 클래스</a></li><li class="nav-list-item"><a href="/chapter11-system.html" class="nav-list-link">11장 시스템</a></li><li class="nav-list-item"><a href="/chapter17-smell-and-heuristic.html" class="nav-list-link">17장 냄새와 휴리스틱</a></li><li class="nav-list-item"><a href="/chapter3-function.html" class="nav-list-link">3장 함수</a></li><li class="nav-list-item"><a href="/chapter5-consistent-formatting%20.html" class="nav-list-link">5장 형식 맞추기</a></li><li class="nav-list-item"><a href="/chpater6-obejct-and-data-structure.html" class="nav-list-link">6장 객체와 자료구조</a></li><li class="nav-list-item"><a href="/chapter7-error-handling.html" class="nav-list-link">7장 오류 처리</a></li><li class="nav-list-item"><a href="/chapter9-unit-test.html" class="nav-list-link">9장 단위 테스트</a></li><li class="nav-list-item"><a href="/chapter15-junit.html" class="nav-list-link">JUnit</a></li><li class="nav-list-item"><a href="/chapter16-SerialDate-refactoring.html" class="nav-list-link">SerialDate 리팩토링</a></li><li class="nav-list-item"><a href="/" class="nav-list-link">clean-code-study</a></li><li class="nav-list-item"><a href="/chapter8-boundary.html" class="nav-list-link">경계</a></li><li class="nav-list-item"><a href="/chapter1-clean-code.html" class="nav-list-link">깨끗한 코드</a></li><li class="nav-list-item"><a href="/chapter13-concurrency.html" class="nav-list-link">동시성</a></li><li class="nav-list-item"><a href="/appendix-concurrency.html" class="nav-list-link">동시성</a></li><li class="nav-list-item"><a href="/chapter14-incremental-improvement.html" class="nav-list-link">점진적인 개선</a></li><li class="nav-list-item"><a href="/chapter4-annotation.html" class="nav-list-link">주석</a></li><li class="nav-list-item"><a href="/chapter12-emergence.html" class="nav-list-link">창발성</a></li></ul> </nav> <footer class="site-footer"> This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll. </footer> </div> <div class="main" id="top"> <div id="main-header" class="main-header"> <div class="search" role="search"> <div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search Dev Open Library" aria-label="Search Dev Open Library" autocomplete="off"> <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label> </div> <div id="search-results" class="search-results"></div> </div> </div> <div class="main-content-wrap"> <div id="main-content" class="main-content"> <main> <h1 id="6장-객체와-자료구조"> <a href="#6장-객체와-자료구조" class="anchor-heading" aria-labelledby="6장-객체와-자료구조"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 6장 객체와 자료구조 </h1> <p>변수를 비공개(private)로 정의하는 이유는 남들이 변수에 의존하지 않게 만들고 싶어서이다. 하지만, 어째서인지 <strong>수많은 프로그래머들은 조회(get)함수 와 설정(set)함수를 당연하게 공개해 비공개 변수를 외부에 노출</strong>한다.</p> <h2 id="자료-추상화"> <a href="#자료-추상화" class="anchor-heading" aria-labelledby="자료-추상화"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 자료 추상화 </h2> <p>다음 목록 6-1, 6-2 클래스를 살펴보자. 두 클래스 모두 2차원 점을 표현하지만 한 클래스는 구현을 외부로 노출하고, 다른 클래스는 구현을 완전히 숨긴다.</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 목록 6-1 구체적인 Point 클래스</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Point</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="n">x</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="n">y</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 목록 6-2 추상적인 Point 클래스</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Point</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="nf">getX</span><span class="o">();</span>
+    <span class="kt">double</span> <span class="nf">getY</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">setCartesian</span><span class="o">(</span><span class="kt">double</span> <span class="n">x</span><span class="o">,</span> <span class="kt">double</span> <span class="n">y</span><span class="o">);</span>
+    <span class="kt">double</span> <span class="nf">getR</span><span class="o">();</span>
+    <span class="kt">double</span> <span class="nf">getTheta</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">setPolar</span><span class="o">(</span><span class="kt">double</span> <span class="n">r</span><span class="o">,</span> <span class="kt">double</span> <span class="n">theta</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>6-2는 점이 직표좌표계를 사용하는지, 극좌표계를 사용하는지 알 길이 없다. 하지만, 점을 표현하는 자료 구조라는 점은 명확하게 안다.</p> <blockquote> <p>직교좌표계와 극좌표계는 2차원 평면상의 점을 표현하는 두 가지 다른 방식. 직교좌표계는 점을 두 개의 직선 거리(x, y)로 표현하고, 극좌표계는 거리(r)와 각도(θ)로 표현한다.</p> </blockquote> <p><strong>즉, 인터페이스를 통해 자료구조는 알지만 어떤 방식으로 구현했는 지 내부 동작에 관련해서는 알수 없도록 숨긴 것이다.</strong></p> <p>사실 6-2 는 자료 구조 그 이상을 표현한다. <strong>클래스 메서드가 접근 정책을 강제</strong>한다. 예를 들면, 좌표를 읽을 때는 각 값을 개별적으로 읽어야하지만 좌표를 설정할 때는 두 값을 한거번에 설정해야 한다.</p> <p>반면 6-1은 확실히 직교좌표계를 사용한다는 것을 알 수 있다. 구현을 노출하는 것이다. 또한 개별적으로 좌표값을 읽고 설정하게 강제한다. <strong>만약 변수를 private하게 바꾸더라도, 각 값마다 조회/설정함수를 제공한다면 구현을 외부로 노출하는 셈이다.</strong></p> <p>이처럼 변수 사이에 함수라는 계층을 넣는다고 구현이 저절로 감춰지지 않는다. 구현을 감추기 위해 필요한 것은 <strong>추상화</strong>이다. <strong>추상 인터페이스를 통해 사용자가 구현을 모른 채 자료 구조의 핵심을 조작할 수 있어야 진정한 의미의 클래스다.</strong></p> <p>마지막으로 목록 6-3과 목록 6-4를 살펴보자.</p> <p>목록 6-3은 자동차 연료 상태를 <strong>구체적인 숫자 값</strong>으로 알려준다. 해당 값이 변수값을 읽어 반환한 값이라는 사실이 거의 확실하다.</p> <p>반면, 목록 6-4는 자동차 연료 상태를 백분율이라는 <strong>추상적인 개념</strong>으로 알려준다. 이 정보는 어디서 오는지 전혀 드러나지 않는다.</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 목록 6-3 구체적인 Vehicle 클래스</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Vehicle</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="nf">getFuelTankCapacityInCallons</span><span class="o">();</span>
+    <span class="kt">double</span> <span class="nf">getGallonsOfGasoline</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 목록 6-4 추상적인 Vehicle 클래스</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Vehicle</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="nf">getPercentFuelRemaining</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>목록 6-1과 목록 6-2에서는 목록 6-2가, 목록 6-3과 목록 6-4에서는 목록 6-4가 더 좋다. 자료를 세세하게 공개하지않고 추상적인 개념으로 표현하기 때문이다.</p> <p>인터페이스나 조회/설정 함수만으로는 추상화가 이뤄지지 않는다. <strong>개발자는 객체가 포함하는 자료를 표현할 가장 좋은 방법을 심각하게 고민해야한다.</strong> 아무 생각 없이 조회/설정 함수를 추가하는 방법이 가장 나쁘다.</p> <h2 id="자료객체-비대칭"> <a href="#자료객체-비대칭" class="anchor-heading" aria-labelledby="자료객체-비대칭"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 자료/객체 비대칭 </h2> <p>앞선 두 가지 예제(목록 6-1/목록 6-2, 목록 6-3/목록 6-4)는 <strong>객체와 자료 구조 사이에 벌어진 차이</strong>를 보여준다.</p> <ul> <li><strong>객체</strong>는 추상화 뒤로 <strong>자료를 숨긴 채</strong> 자료를 다루는 <strong>함수만 공개</strong>한다.</li> <li><strong>자료구조</strong>는 <strong>자료를 그대로 공개</strong>하며 별다른 <strong>함수는 제공하지 않는다</strong>.</li> </ul> <p><strong>두 정의는 본질적으로 상반되며, 차이를 만든다.</strong> 절차적인 코드인 6-5와 객체지향 코드인 목록 6-5의 예제를 통해 살펴보자.</p> <p>목록 6-5는 절차적인 도형클래스이다. <code class="language-plaintext highlighter-rouge">Geometry 클래스</code>는 세 가지 도형 클래스를 다룬다. 각 도형 클래스는 간단한 자료구조다. 즉, 아무 메서드도 제공하지 않는다. 도형이 동작하는 방식은 <code class="language-plaintext highlighter-rouge">Geometry 클래스</code>에서 구현한다.</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 목록 6-5 절차적인 도형 클래스</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Square</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">Point</span> <span class="n">topLeft</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="n">side</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Rectangle</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">Point</span> <span class="n">topLeft</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="n">height</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="n">width</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Circle</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">Point</span> <span class="n">center</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="n">radius</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Geometry</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.141592653589793</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">area</span><span class="o">(</span><span class="nc">Object</span> <span class="n">shape</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">NoSuchShapeException</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">shape</span> <span class="k">instanceof</span> <span class="nc">Square</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Square</span> <span class="n">s</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Square</span><span class="o">)</span> <span class="n">shape</span><span class="o">;</span>
+            <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="na">side</span> <span class="o">*</span> <span class="n">s</span><span class="o">.</span><span class="na">side</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">shape</span> <span class="k">instanceof</span> <span class="nc">Rectangle</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Rectangle</span> <span class="n">r</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Rectangle</span><span class="o">)</span> <span class="n">shape</span><span class="o">;</span>
+            <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="na">height</span> <span class="o">*</span> <span class="n">r</span><span class="o">.</span><span class="na">width</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">shape</span> <span class="k">instanceof</span> <span class="nc">Circle</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">Circle</span> <span class="n">c</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Circle</span><span class="o">)</span> <span class="n">shape</span><span class="o">;</span>
+            <span class="k">return</span> <span class="no">PI</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">radius</span> <span class="o">*</span> <span class="n">c</span><span class="o">.</span><span class="na">radius</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">NoSuchShapeException</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>객체 지향 프로그래머가 위 코드를 본다면 클래스가 절차적이라고 비판할수도 있다. 하지만 그것이 100% 옳다고 말하긴 어렵다.</p> <p>만약 <code class="language-plaintext highlighter-rouge">Geometry 클래스</code>에 둘레 길이를 구하는 <code class="language-plaintext highlighter-rouge">perimeter()</code> 라는 함수를 추가한다고 치자. 이때 세개의 <strong>도형 클래스들은 아무런 영향을 받지 않는다.</strong> 도형 클래스에 의존하는 다른 클래스도 마찬가지이다.</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*...*/</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Geometry</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">area</span><span class="o">(</span><span class="nc">Object</span> <span class="n">shape</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">NoSuchShapeException</span> <span class="o">{</span>
+        <span class="cm">/* ... */</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">perimeter</span><span class="o">(</span><span class="nc">Object</span> <span class="n">shape</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">NoSuchShapeException</span> <span class="o">{</span>
+        <span class="cm">/*...*/</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>하지만 반면 <strong>새 도형 클래스를 추가하고 싶다면, <code class="language-plaintext highlighter-rouge">Geometry 클래스</code>에 속한 함수를 모두 고쳐야 한다.</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*...*/</span>
+
+<span class="c1">// 새 도형 클래스 추가</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pentagon</span> <span class="o">{</span>
+    <span class="cm">/*...*/</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Geometry</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">area</span><span class="o">(</span><span class="nc">Object</span> <span class="n">shape</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">NoSuchShapeException</span> <span class="o">{</span>
+        <span class="cm">/*...*/</span>
+
+        <span class="c1">// 함수 수정</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">shape</span> <span class="n">instance</span> <span class="n">of</span> <span class="nc">Pentagon</span><span class="o">){</span>
+            <span class="cm">/*...*/</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">perimeter</span><span class="o">(</span><span class="nc">Object</span> <span class="n">shape</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">NoSuchShapeException</span> <span class="o">{</span>
+        <span class="cm">/*...*/</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">shape</span> <span class="n">instance</span> <span class="n">of</span> <span class="nc">Pentagon</span><span class="o">){</span>
+            <span class="cm">/*...*/</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>이번에는 객체 지향적인 코드인 목록 6-6을 살펴보자. <code class="language-plaintext highlighter-rouge">area()</code>는 다형 메서드다.</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 목록 6-6 다형적인 도형</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Square</span> <span class="kd">implements</span> <span class="nc">Shape</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Point</span> <span class="n">topLeft</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">side</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">area</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">side</span> <span class="o">*</span> <span class="n">side</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Rectangle</span> <span class="kd">implements</span> <span class="nc">Shape</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Point</span> <span class="n">topLeft</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">height</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">width</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">area</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">height</span> <span class="o">*</span> <span class="n">width</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Circle</span> <span class="kd">implements</span> <span class="nc">Shape</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Point</span> <span class="n">center</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">radius</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">PI</span> <span class="o">=</span> <span class="mf">3.141592653589793</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">area</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="no">PI</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">area()</code>는 다형 메서드이므로 <code class="language-plaintext highlighter-rouge">Geometry 클래스</code>는 필요없다. 따라서 <strong>새 도형 클래스를 추가해도 기존 함수에 아무런 영향을 미치지 않는다.</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Square</span> <span class="kd">implements</span> <span class="nc">Shape</span> <span class="o">{</span>
+    <span class="cm">/*...*/</span>
+<span class="o">}</span>
+
+<span class="cm">/**
+.
+.
+.
+*/</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pentagon</span> <span class="kd">implements</span> <span class="nc">Shape</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">area</span><span class="o">()</span> <span class="o">{</span>
+        <span class="cm">/*...*/</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>하지만 반면 <strong>새 함수를 추가하고 싶다면 도형 클래스 전부를 고쳐야한다.</strong></p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Square</span> <span class="kd">implements</span> <span class="nc">Shape</span> <span class="o">{</span>
+    <span class="cm">/*...*/</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">perimeter</span><span class="o">(){</span>
+        <span class="cm">/*...*/</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Rectangle</span> <span class="kd">implements</span> <span class="nc">Shape</span> <span class="o">{</span>
+    <span class="cm">/*...*/</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">perimeter</span><span class="o">(){</span>
+        <span class="cm">/*...*/</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Circle</span> <span class="kd">implements</span> <span class="nc">Shape</span> <span class="o">{</span>
+    <span class="cm">/*...*/</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">perimeter</span><span class="o">(){</span>
+        <span class="cm">/*...*/</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div> <p>앞서도 말했듯이, 목록 6-5와 목록 6-6은 객체와 자료구조 사이의 양분되는 특질을 보여준다.</p> <ul> <li> <p>(자료구조를 사용하는) 절차적인 코드는 기존 자료 구조를 변경하지 않으면서 새 함수를 추가하기 쉽다. 반면, 객체 지향 코드는 기존 함수를 변경하지 않으면서 새 클래스를 추가하기 쉽다.</p> </li> <li> <p>절차적인 코드는 새로운 자료 구조를 추가하기 어렵다. 그러려면 모든 함수를 고쳐야 하기 한다. 객체 지향 코드는 새로운 함수를 추가하기 어렵다. 그러려면 모든 클래스를 고쳐야한다.</p> </li> </ul> <p>다시 말해, 객체 지향 코드(객체 중심의)에서 어려운 변경은 절차적인 코드(자료 구조 중심의)에서 쉬우며, 절차적인 코드에서 어려운 변경은 객체 지향 코드에서 쉽다.</p> <p>분별 있는 프로그래머라면 모든 것이 객체라는 생각이 미신임을 잘 안다. 때로는 단순한 자료 구조와 절차적인 코드가, 때로는 객체 지향 코드가 적합한 경우들이 존재한다.</p> <h2 id="디미터-법칙"> <a href="#디미터-법칙" class="anchor-heading" aria-labelledby="디미터-법칙"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 디미터 법칙 </h2> <p>디미터 법칙은 잘 알려진 휴리스틱으로, 모듈은 자신이 조작하는 객체의 속사정을 몰라야 한다는 법칙이다.</p> <p>앞 절에서 봤듯이, 객체는 자료를 숨기고 함수를 공개한다. 즉, 객체는 조회 함수로 내부 구조를 공개하면 안된다는 의미다. 디미터 법칙은 좀 더 정확히 표현하자면, <em>“클래스 C의 메서드 f는 다음과 같은 객체의 메서드만 호출해야 한다”</em> 고 주장한다.</p> <ul> <li>클래스 C</li> <li>f가 생성한 객체</li> <li>f 인수로 넘어온 객체</li> <li>C 인스턴스 변수에 저장된 객체</li> </ul> <p>하지만 위 객체에서 허용된 메서드가 반환하는 객체의 메서드는 호출하면 안된다.</p> <p>다음 코드는 디미터 법칙을 어기는 듯 보인다. 객체 <code class="language-plaintext highlighter-rouge">ctxt</code>의 함수인 <code class="language-plaintext highlighter-rouge">getOptions()</code> 함수가 반환하는 객체의 <code class="language-plaintext highlighter-rouge">getScratchDir()</code> 함수를 호출한 후, 또 그 함수가 반환하는 객체의 <code class="language-plaintext highlighter-rouge">getAbsolutePath()</code> 함수를 호출하기 때문이다.</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 임시 디렉터리의 절대 경로를 얻는 코드</span>
+<span class="kd">final</span> <span class="nc">String</span> <span class="n">outputDir</span> <span class="o">=</span> <span class="n">ctxt</span><span class="o">.</span><span class="na">getOptions</span><span class="o">().</span><span class="na">getScratchDir</span><span class="o">().</span><span class="na">getAbsolutePath</span><span class="o">();</span>
+</code></pre></div></div> <h3 id="기차-충돌"> <a href="#기차-충돌" class="anchor-heading" aria-labelledby="기차-충돌"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 기차 충돌 </h3> <p>위와 같은 코드를 기차 충돌이라 부른다. 여러 객차가 한 줄로 이어진 기차처럼 보이기 때문이다. 일반적으로 조잡하다 여겨지는 방식이므로 피하는 편이 좋다.</p> <p>따라서 위 코드는 다음과 같이 나누는 편이 좋다.</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Options</span> <span class="n">opts</span> <span class="o">=</span> <span class="n">ctxt</span><span class="o">.</span><span class="na">getOptions</span><span class="o">();</span>
+<span class="nc">File</span> <span class="n">scratchDir</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="na">getScratchDir</span><span class="o">();</span>
+<span class="kd">final</span> <span class="nc">String</span> <span class="n">outputDir</span> <span class="o">=</span> <span class="n">scratchDir</span><span class="o">.</span><span class="na">getAbsolutePath</span><span class="o">();</span>
+</code></pre></div></div> <p>이로써 기차 충돌 문제는 해결했지만, 디미터 법칙을 여전히 위반하는지 알 수없다.</p> <p>그 여부는 <code class="language-plaintext highlighter-rouge">ctxt</code>, <code class="language-plaintext highlighter-rouge">options</code>, <code class="language-plaintext highlighter-rouge">scratchDir</code>이 객체인지 아니면 자료 구조인지에 달렸다. 객체라면 내부 구조를 숨겨야 하기에 디미터 법칙을 위반하게 되고, 자료 구조라면 내부 구조를 노출하므로 디미터 법칙이 적용되지 않는다.</p> <p>그런데 위 예제는 조회 함수(get)를 사용하는 바람에 혼란을 일으킨다. 위 예제를 다음과 같이 구현했다면 디미터 법칙을 거론할 필요가 없어진다.</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="nc">String</span> <span class="n">ouputDir</span> <span class="o">=</span> <span class="n">ctxt</span><span class="o">.</span><span class="na">options</span><span class="o">.</span><span class="na">scratchDir</span><span class="o">.</span><span class="na">absolutePath</span><span class="o">;</span>
+</code></pre></div></div> <p>자료 구조는 무조건 함수 없이 공개 변수만 포함하고 객체는 비공개 변수와 공개 함수를 포함하면 훨씬 간단해진다.</p> <h3 id="잡종-구조"> <a href="#잡종-구조" class="anchor-heading" aria-labelledby="잡종-구조"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 잡종 구조 </h3> <p>위와 같은 혼란은 때때로 절반은 객체, 절반은 자료 구조인 잡종 구조를 야기한다. 잡종 구조에는 중요한 기능을 수행하는 함수도 있고, 공개 변수나 공개 조회/설정 함수도 있다.</p> <p>이런 잡종 구조는 새로운 함수는 물론, 새로운 자료 구조도 추가하기 어렵다. 그러므로 잡종 구조는 되도록 피하는 편이 좋다. 잡종 구조는 프로그래머가 함수나 타입을 보호할지 공개할지 확신하지 못해(더 나쁘게는 무지해) 어중간하게 내놓은 설계에 불과하다.</p> <h3 id="구조체-감추기"> <a href="#구조체-감추기" class="anchor-heading" aria-labelledby="구조체-감추기"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 구조체 <em>감추기</em> </h3> <p>만약 <code class="language-plaintext highlighter-rouge">ctxt</code>, <code class="language-plaintext highlighter-rouge">options</code>, <code class="language-plaintext highlighter-rouge">scratchDir</code>이 진짜 객체라면 내부 구조를 감춰야 하기 때문에, 앞선 코드 예제처럼 줄줄이 사탕으로 엮어서는 안된다. 그렇다면 어떤 방식으로 임시 디렉터리의 절대 경로를 얻는 이 코드를 변경할 수 있을까?</p> <p>다음 두 코드를 살펴보자.</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ctxt</span><span class="o">.</span><span class="na">getAbsolutePathOfScratchDirectoryOption</span><span class="o">();</span>
+
+
+<span class="n">ctxt</span><span class="o">.</span><span class="na">getScratchDirectoryOption</span><span class="o">().</span><span class="na">getAbsolutePath</span><span class="o">();</span>
+</code></pre></div></div> <p>첫 번째 방법은 <code class="language-plaintext highlighter-rouge">ctxt</code> 객체에 공개해야하는 메서드가 너무 많아진다.</p> <p>두 번째 방법은 <code class="language-plaintext highlighter-rouge">getScratchDirectoryOption()</code>이 객체가 아닌, 자료 구조를 반환한다고 가정한다.</p> <p>두 변경 방법 모두 내부 구조를 드러내는 방향이기에 디미터 법칙을 위반하게된다. 객체의 메서드에게는 <strong>뭔가를 하라고</strong> 말해야지 속을 드러내라고 말하면 안된다.</p> <p>다음은 같은 모듈에서 가져온 코드이다. 이는 절대 경로를 가져오는 이유가 임시 파일을 생성하기 위한 목적이라는 사실이 드러난다.</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">outFile</span> <span class="o">=</span> <span class="n">outputDir</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="n">className</span><span class="o">.</span><span class="na">replace</span><span class="o">(</span><span class="sc">'•'</span><span class="o">,</span> <span class="sc">'/'</span><span class="o">)</span> <span class="o">+</span> <span class="s">"-class"</span><span class="o">;</span>
+<span class="nc">FileOutputStream</span> <span class="n">fout</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileOutputStream</span><span class="o">(</span><span class="n">outFile</span><span class="o">);</span>
+<span class="nc">BufferedOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BufferedOutputStream</span><span class="o">(</span><span class="n">fout</span><span class="o">);</span>
+</code></pre></div></div> <p>그렇다면 ctxt 객체에 임시 파일을 생성하라고 시키면 어떨까?</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">BufferedOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="n">ctxt</span><span class="o">.</span><span class="na">createScratchFileStream</span><span class="o">(</span><span class="n">classFileName</span><span class="o">);</span>
+</code></pre></div></div> <p>이로써 ctxt는 내부 구조를 드러내지 않으며. 모듈에서 해당 함수는 자신이 몰라야하는 여러 객체(디미터의 법칙)를 탐색할 필요가 없다.</p> <h2 id="자료-전달-객체"> <a href="#자료-전달-객체" class="anchor-heading" aria-labelledby="자료-전달-객체"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 자료 전달 객체 </h2> <p>자료 구조체의 전형적인 형태는 <strong>공개 변수만 있고 함수가 없는 클래스</strong>다. 이런 자료 구조체를 때로는 자료 전달 객체(Data Transfer Object, DTO)라 한다.</p> <p>DTO는 굉장히 유용한 구조체다. 특히 데이터베이스와 통신하거나 소켓에서 받은 메시지의 구문을 분석할 때 유용하다. 흔히 DTO는 데이터베이스에 저장된 가공되지 않은 정보를 애플리케이션 코드에서 사용할 객체로 변환하는 일련의 단계에서 가장 처음으로 사용하는 구조체다.</p> <p>좀 더 일반적인 형태는 ‘bean’ 구조다. bean은 비공개(private) 변수를 조회/설정 함수로 조작한다. 이는 일종의 <em>사이비 캡슐화</em> 로 간주되며, 별다른 이익을 제공하지 않는다.</p> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 목록 6-7 address.java</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Address</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">street</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">streetExtra</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">city</span><span class="o">;</span> <span class="kd">private</span> <span class="nc">String</span> <span class="n">state</span><span class="o">;</span> <span class="kd">private</span> <span class="nc">String</span> <span class="n">zip</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">Address</span> <span class="o">(</span><span class="nc">String</span> <span class="n">street</span><span class="o">,</span> <span class="nc">String</span> <span class="n">streetExtra</span><span class="o">,</span>
+                   <span class="nc">String</span> <span class="n">city</span><span class="o">,</span> <span class="nc">String</span> <span class="n">state</span><span class="o">,</span> <span class="nc">String</span> <span class="n">zip</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">street</span> <span class="o">=</span> <span class="n">street</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">streetExtra</span> <span class="o">=</span> <span class="n">streetExtra</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">city</span> <span class="o">=</span> <span class="n">city</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">state</span> <span class="o">=</span> <span class="n">state</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">zip</span> <span class="o">=</span> <span class="n">zip</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getStreet</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">street</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getStreetExtra</span> <span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">streetExtra</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getCity</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">city</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getState</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">state</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getZip</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">zip</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div> <h3 id="활성-레코드"> <a href="#활성-레코드" class="anchor-heading" aria-labelledby="활성-레코드"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 활성 <em>레코드</em> </h3> <p>활성 레코드는 DTO의 특수한 형태다. 공개 변수가 있거나 비공개 변수에 조회/설정 함수가 있는 자료 구조지만, 대개 <code class="language-plaintext highlighter-rouge">save</code>나 <code class="language-plaintext highlighter-rouge">find</code>와 같은 탐색 함수도 제공한다. 활성 레코드는 데이터베이스 테이블이나 다른 소스에서 자료를 직접 변환한 결과다.</p> <p>활성 레코드에 비즈니스 규칙 메서드를 추가해 자료 구조를 객체로 취급하는 것은 바람직하지 않다. 그러면 자료 구조도 아니고 객체도 아닌 잡종 구조가 나오기 때문이다.</p> <p>해결책은 당연하다. 활성 레코드는 자료 구조로 취급한다. 비즈니스 규칙을 담으면서 내부 자료를 숨기는 객체는 따로 생성한다. (여기서 내부 자료는 활성 레코드의 인스턴스일 가능성이 높다.)</p> <h2 id="결론"> <a href="#결론" class="anchor-heading" aria-labelledby="결론"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 결론 </h2> <p><strong>객체는 동작을 공개하고 자료를 숨긴다.</strong> 그래서 기존 동작을 변경하지 않으면서 새 객체 타입을 추가하기는 쉬운 반면, 기존 객체에 새 동작(함수)을 추가하기는 어렵다.</p> <p><strong>자료 구조는 별다른 동작 없이 자료를 노출한다.</strong> 그래서 기존 자료 구조에 새 동작을 추가하기는 쉬우나, 기존 함수에 새 자료 구조를 추가하기는 어렵다.</p> <p><strong>시스템을 구현할 때, 새로운 자료 타입을 추가하는 유연성이 필요하면 객체가 더 적합하다. 다른 경우로 새로운 동작을 추가하는 유연성이 필요하면 자료 구조와 절차적인 코드가 더 적합하다.</strong> 우수한 소프트웨어 개발자는 편견 없이 이 사실을 이해해 직면한 문제에 최적인 해결책을 선택한다.</p> </main> </div> </div> <div class="search-overlay"></div> </div> </body> </html>
