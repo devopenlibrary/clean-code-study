@@ -1,4 +1,5 @@
 title: Dev Open Library # the main title
+title_link: 'https://google.com'
 remote_theme: just-the-docs/just-the-docs
 lang: en
 timezone: Asia/Seoul
@@ -27,6 +28,9 @@ collections:
     output: true
     permalink: /Data Structure/:path/
 
+nav:
+  - title: "Function"
+    url: /chapter3-function
 
 markdown: kramdown
 highlighter: rouge
