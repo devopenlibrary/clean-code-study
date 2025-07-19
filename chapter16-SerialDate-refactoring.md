@@ -1,4 +1,4 @@
-# SerialDate 리팩토링
+# 16장 SerialDate 리팩토링
 
 ## 첫째, 돌려보자
 
